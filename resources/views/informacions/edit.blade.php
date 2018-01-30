@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title','Editar Informacion')
+@section('title','Editar Información')
 @section('content')
     <section class="content-header">
         <h1>
-            Informacion
+            Información
         </h1>
    </section>
    <div class="content">
@@ -16,7 +16,7 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($informacion, ['route' => ['informacions.update', $informacion->id], 'method' => 'patch']) !!}
+                   {!! Form::model($informacion, ['route' => ['informacions.update', $informacion->id], 'method' => 'patch', 'enctype'=>'multipart/form-data' ]) !!}
 
                         @include('informacions.fields')
 
@@ -25,4 +25,10 @@
            </div>
        </div>
    </div>
+@endsection
+
+@section('scripts')
+  <script src="{{ asset('back/plugins/tinymce/tinymce.min.js') }}"></script>
+
+  <script>tinymce.init({ selector:'#quienes_somos' });</script>
 @endsection

@@ -12,16 +12,22 @@
     <small class="help-block">Ingrese el Correo Electronico</small>
 </div>
 
+<!-- Direccion Field -->
+<div class="form-group col-sm-8">
+    {!! Form::label('direccion', 'Dirección:') !!}
+    {!! Form::text('direccion', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Telefono1 Field -->
 <div class="form-group col-sm-8">
-    {!! Form::label('telefono1', 'Teléfono1:') !!}
+    {!! Form::label('telefono1', 'Teléfono #1:') !!}
     {!! Form::text('telefono1', null, ['class' => 'form-control']) !!}
     <small class="help-block">Ingrese el Su Numero de teléfono sin el +56</small>
 </div>
 
 <!-- Telefono2 Field -->
 <div class="form-group col-sm-8">
-    {!! Form::label('telefono2', 'Teléfono2:') !!}
+    {!! Form::label('telefono2', 'Teléfono #2:') !!}
     {!! Form::text('telefono2', null, ['class' => 'form-control']) !!}
     <small class="help-block">Ingrese el Su Numero de teléfono sin el +56</small>
 </div>
@@ -39,11 +45,6 @@
     {!! Form::text('url_facebook', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Direccion Field -->
-<div class="form-group col-sm-8">
-    {!! Form::label('direccion', 'Direccion:') !!}
-    {!! Form::text('direccion', null, ['class' => 'form-control']) !!}
-</div>
 
 <!-- Mapa Field -->
 <div class="form-group col-sm-12 col-lg-12">
@@ -59,17 +60,26 @@
 
 <!-- Quienes Somos Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('quienes_somos', 'Quienes Somos:') !!}
-    {!! Form::textarea('quienes_somos', null, ['class' => 'form-control']) !!}
-</div>
+    {!! Form::label('quienes_somos', 'Quiénes Somos:') !!}
+    {!! Form::textarea('quienes_somos', null, ['class' => 'form-control','id'=>'quienes_somos']) !!}
+</div> 
 
 <!-- Imagen Quienes Somos Field -->
 <div class="form-group col-sm-8">
     {!! Form::label('imagen_quienes_somos', 'Imagen Quienes Somos:') !!}
     {!! Form::file('imagen_quienes_somos') !!}
 </div>
+@if(isset($informacion->imagen_quienes_somos))
+<div class="col-sm-6" style="margin-bottom: 10px">
+    <img src="{{asset('upload/informacion/'.$informacion->imagen_quienes_somos)}}" class="img-thumbnail" width="100" alt="">
+</div>   
+@endif 
+
+
+
 
 <!-- Submit Field -->
+
 <div class="form-group col-sm-12">
     {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('home') !!}" class="btn btn-default">Volver</a>

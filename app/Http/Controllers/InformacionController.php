@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-
+use Image;
 class InformacionController extends AppBaseController
 {
     /** @var  InformacionRepository */
@@ -122,11 +122,54 @@ class InformacionController extends AppBaseController
             return redirect(route('informacions.edit',$id));
         }
 
-        $informacion = $this->informacionRepository->update($request->all(), $id);
+        if($request->hasFile('imagen_quienes_somos'))
+        {
+            if (!file_exists('upload/informacion/')) {
+                mkdir('upload/informacion/', 777, true);
+            }
+             $imagen=Image::make($request->imagen_quienes_somos->getRealPath())->resize(1000, null, function($x){
+               $x->aspectRatio();
+             })->save('upload/informacion/'.$request->imagen_quienes_somos->getClientOriginalName());
 
-        Flash::success('Información Editada exitosamente.');
+            $informacion = $this->informacionRepository->update([
+                'nombre_empresa'=>$request->nombre_empresa,
+                'email'=>$request->email,
+                'direccion'=>$request->direccion,
+                'telefono1'=>$request->telefono1,
+                'telefono2'=>$request->telefono2,
+                'nombre_facebook'=>$request->nombre_facebook,
+                'url_facebook'=>$request->url_facebook,                
+                'mapa'=>$request->mapa,
+                'texto_footer'=>$request->texto_footer,
+                'quienes_somos'=>$request->quienes_somos,
+                'imagen_quienes_somos'=>$request->imagen_quienes_somos->getClientOriginalName()
+            ], $id);
 
-        return redirect(route('informacions.edit',$id));
+            Flash::success('Información Editada exitosamente.');
+
+            return redirect(route('informacions.edit',$id));
+        }   
+        else{
+              $informacion = $this->informacionRepository->update([
+                'nombre_empresa'=>$request->nombre_empresa,
+                'email'=>$request->email,
+                'direccion'=>$request->direccion,
+                'telefono1'=>$request->telefono1,
+                'telefono2'=>$request->telefono2,
+                'nombre_facebook'=>$request->nombre_facebook,
+                'url_facebook'=>$request->url_facebook,                
+                'mapa'=>$request->mapa,
+                'texto_footer'=>$request->texto_footer,
+                'quienes_somos'=>$request->quienes_somos,
+                //'imagen_quienes_somos'=>$request->imagen_quienes_somos->getClientOriginalName()
+            ], $id);
+
+            Flash::success('Información Editada exitosamente.');
+
+            return redirect(route('informacions.edit',$id));
+        } 
+
+       
     }
 
     /**

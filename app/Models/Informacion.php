@@ -35,11 +35,11 @@ class Informacion extends Model
     public $fillable = [
         'nombre_empresa',
         'email',
+        'direccion',
         'telefono1',
         'telefono2',
         'nombre_facebook',
-        'url_facebook',
-        'direccion',
+        'url_facebook',        
         'mapa',
         'texto_footer',
         'quienes_somos',
@@ -54,11 +54,11 @@ class Informacion extends Model
     protected $casts = [
         'nombre_empresa' => 'string',
         'email' => 'string',
+        'direccion' => 'string',
         'telefono1' => 'string',
         'telefono2' => 'string',
         'nombre_facebook' => 'string',
-        'url_facebook' => 'string',
-        'direccion' => 'string',
+        'url_facebook' => 'string',        
         'mapa' => 'string',
         'texto_footer' => 'string',
         'quienes_somos' => 'string',
@@ -77,7 +77,7 @@ class Informacion extends Model
         'telefono2' => 'required',
         'nombre_facebook' => 'required',
         'direccion' => 'required',
-        //'imagen_quienes_somos'=>'image:*'
+        'imagen_quienes_somos'=>'image:*'
     ];
 
     

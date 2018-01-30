@@ -61,7 +61,7 @@ class SliderController extends AppBaseController
          if($request->hasFile('imagen'))
          {
               //si la imagen no es vacia
-             if (!file_exists('upload/maquinaria/')) {
+             if (!file_exists('upload/slider/')) {
                 mkdir('upload/slider/', 777, true);
             }
              $imagen=Image::make($request->imagen->getRealPath())->resize(1500, null, function($x){
@@ -144,7 +144,7 @@ class SliderController extends AppBaseController
           if($request->hasFile('imagen'))
          {
               //si la imagen no es vacia
-             if (!file_exists('upload/maquinaria/')) {
+             if (!file_exists('upload/slider/')) {
                 mkdir('upload/slider/', 777, true);
             }
              $imagen=Image::make($request->imagen->getRealPath())->resize(1500, null, function($x){
