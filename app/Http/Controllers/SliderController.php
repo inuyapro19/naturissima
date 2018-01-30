@@ -57,26 +57,44 @@ class SliderController extends AppBaseController
      */
     public function store(CreateSliderRequest $request)
     {
-        $input = $request->all();
+         
+         if($request->hasFile('imagen'))
+         {
+              //si la imagen no es vacia
+             if (!file_exists('upload/maquinaria/')) {
+                mkdir('upload/slider/', 777, true);
+            }
+             $imagen=Image::make($request->imagen->getRealPath())->resize(1500, null, function($x){
+               $x->aspectRatio();
+             })->save('upload/slider/'.$request->imagen->getClientOriginalName());
+            //$reque
 
-        $slider = $this->sliderRepository->create([
-            'titulo' => $request->titulo,
-            'subtitulo' => $request->subtitulo,
-            'imagen' => $request->imagen->getClientOriginalName()
-        ]);
+              $slider = $this->sliderRepository->create([
+                'titulo' => $request->titulo,
+                'subtitulo' => $request->subtitulo,
+                'imagen' => $request->imagen->getClientOriginalName()
+                ]);
+             Flash::success('Slider Agregado Exitosamente'); 
 
-        Flash::success('Slider Agregado Exitosamente');
+            return redirect(route('sliders.index'));
+         }
+         else{
+             $slider = $this->sliderRepository->create([
+                'titulo' => $request->titulo,
+                'subtitulo' => $request->subtitulo,
+                //'imagen' => $request->imagen->getClientOriginalName()
+                ]);
+             Flash::success('Slider Agregado Exitosamente'); 
 
-        return redirect(route('sliders.index'));
+            return redirect(route('sliders.index'));
+         }
+
+       
+
+        
     }
 
-    /**
-     * Display the specified Slider.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
+   
     public function show($id)
     {
         $slider = $this->sliderRepository->findWithoutFail($id);
@@ -122,15 +140,37 @@ class SliderController extends AppBaseController
             return redirect(route('sliders.index'));
         }
 
-        $slider = $this->sliderRepository->update([
-            'titulo' => $request->titulo,
-            'subtitulo' => $request->subtitulo,
-            'imagen' => $request->imagen->getClientOriginalName()
-        ], $id);
 
-        Flash::success('Slider Agregado Exitosamente');
+          if($request->hasFile('imagen'))
+         {
+              //si la imagen no es vacia
+             if (!file_exists('upload/maquinaria/')) {
+                mkdir('upload/slider/', 777, true);
+            }
+             $imagen=Image::make($request->imagen->getRealPath())->resize(1500, null, function($x){
+               $x->aspectRatio();
+             })->save('upload/slider/'.$request->imagen->getClientOriginalName());
+            //$reque
 
-        return redirect(route('sliders.index'));
+              $slider = $this->sliderRepository->update([
+                'titulo' => $request->titulo,
+                'subtitulo' => $request->subtitulo,
+                'imagen' => $request->imagen->getClientOriginalName()
+                ],$id);
+             Flash::success('Slider Agregado Exitosamente'); 
+
+            return redirect(route('sliders.index'));
+         }
+         else{
+             $slider = $this->sliderRepository->update([
+                'titulo' => $request->titulo,
+                'subtitulo' => $request->subtitulo,
+                //'imagen' => $request->imagen->getClientOriginalName()
+                ],$id);
+             Flash::success('Slider Agregado Exitosamente'); 
+
+            return redirect(route('sliders.index'));
+         }
     }
 
     /**

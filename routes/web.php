@@ -20,8 +20,18 @@ Route::get('/producto_single/{slug}','PrincipalController@producto_singles')->na
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'admin','middleware'=>'auth'],function(){
+
+	Route::get('/home', 'HomeController@index')->name('home');
+
+	Route::resource('sliders', 'SliderController');
+
+	Route::resource('informacions', 'InformacionController');
+
+});
+
+/*Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('sliders', 'SliderController');
 
-Route::resource('informacions', 'InformacionController');
+Route::resource('informacions', 'InformacionController');*/
