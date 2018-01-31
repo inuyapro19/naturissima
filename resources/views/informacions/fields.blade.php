@@ -51,14 +51,14 @@
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('mapa', 'Mapa:') !!}
     {!! Form::textarea('mapa', null, ['class' => 'form-control']) !!}
-    <smal class="help-block">Pegue aquÍ el código del mapa Ejemplo: <iframe></small>
+    <smal class="help-block">Pegue aquÍ el código del mapa Ejemplo: iframe</small>
 </div>
 
 <!-- Texto Footer Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('texto_footer', 'Texto Footer:') !!}
     {!! Form::textarea('texto_footer', null, ['class' => 'form-control']) !!}
-    <smal class="help-block"> Texto en pie de Página <iframe></small>
+    <smal class="help-block"> Texto en pie de Página </small>
 </div>
 
 <!-- Quienes Somos Field -->
