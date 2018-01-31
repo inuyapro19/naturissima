@@ -30,8 +30,5 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'],function(){
 
 });
 
-/*Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resource('sliders', 'SliderController');
-
-Route::resource('informacions', 'InformacionController');*/
+//sort 
+Route::post('sort', '\Rutorika\Sortable\SortableController@sort');

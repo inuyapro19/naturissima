@@ -9,11 +9,11 @@
             <th colspan="3">Acciónes</th>
         </tr>
     </thead>
-    <tbody>
-    @foreach($sliders as $slider)
-        <tr>
-            <td></td>
-            <td>{!! $slider->id !!}</td>
+    <tbody class="sortable" data-entityname="sliders">
+                @foreach($sliders as $slider)
+                <tr data-itemId="{{{ $slider->id }}}">
+                    <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                    <td class="id-column">{{$slider->id}}</td>
             <td>{!! $slider->titulo !!}</td>
             <td>{!! $slider->subtitulo !!}</td>
             <td><img src="{{asset('upload/slider/'.$slider->imagen)}}" width="150" alt=""></td>

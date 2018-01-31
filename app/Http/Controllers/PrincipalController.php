@@ -18,7 +18,7 @@ class PrincipalController extends Controller
 
         //consulta por la informacion
 
-        
+       
     	return view('front.inicio',compact('slider'));
     }
 

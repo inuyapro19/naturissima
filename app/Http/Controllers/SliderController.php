@@ -64,9 +64,7 @@ class SliderController extends AppBaseController
              if (!file_exists('upload/slider/')) {
                 mkdir('upload/slider/', 777, true);
             }
-             $imagen=Image::make($request->imagen->getRealPath())->resize(1500, null, function($x){
-               $x->aspectRatio();
-             })->save('upload/slider/'.$request->imagen->getClientOriginalName());
+             $imagen=Image::make($request->imagen->getRealPath())->resize(1920, 600)->save('upload/slider/'.$request->imagen->getClientOriginalName());
             //$reque
 
               $slider = $this->sliderRepository->create([
@@ -147,9 +145,9 @@ class SliderController extends AppBaseController
              if (!file_exists('upload/slider/')) {
                 mkdir('upload/slider/', 777, true);
             }
-             $imagen=Image::make($request->imagen->getRealPath())->resize(1500, null, function($x){
-               $x->aspectRatio();
-             })->save('upload/slider/'.$request->imagen->getClientOriginalName());
+             $imagen=Image::make($request->imagen->getRealPath())
+             ->resize(1920, 600)
+             ->save('upload/slider/'.$request->imagen->getClientOriginalName());
             //$reque
 
               $slider = $this->sliderRepository->update([

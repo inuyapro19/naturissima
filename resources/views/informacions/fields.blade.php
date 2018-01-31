@@ -22,14 +22,14 @@
 <div class="form-group col-sm-8">
     {!! Form::label('telefono1', 'Teléfono #1:') !!}
     {!! Form::text('telefono1', null, ['class' => 'form-control']) !!}
-    <small class="help-block">Ingrese el Su Numero de teléfono sin el +56</small>
+    <small class="help-block">Ejemplo: +56 9 9999 9999</small>
 </div>
 
 <!-- Telefono2 Field -->
 <div class="form-group col-sm-8">
     {!! Form::label('telefono2', 'Teléfono #2:') !!}
     {!! Form::text('telefono2', null, ['class' => 'form-control']) !!}
-    <small class="help-block">Ingrese el Su Numero de teléfono sin el +56</small>
+    <small class="help-block">Ejemplo: +56 9 9999 9999</small>
 </div>
 
 <!-- Nombre Facebook Field -->
@@ -43,6 +43,7 @@
 <div class="form-group col-sm-8">
     {!! Form::label('url_facebook', 'Url Facebook:') !!}
     {!! Form::text('url_facebook', null, ['class' => 'form-control']) !!}
+    <small class="help-block">Ejemplo: http://www.facebook.com/</small>
 </div>
 
 
@@ -50,12 +51,14 @@
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('mapa', 'Mapa:') !!}
     {!! Form::textarea('mapa', null, ['class' => 'form-control']) !!}
+    <smal class="help-block">Pegue aquÍ el código del mapa Ejemplo: <iframe></small>
 </div>
 
 <!-- Texto Footer Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('texto_footer', 'Texto Footer:') !!}
     {!! Form::textarea('texto_footer', null, ['class' => 'form-control']) !!}
+    <smal class="help-block"> Texto en pie de Página <iframe></small>
 </div>
 
 <!-- Quienes Somos Field -->

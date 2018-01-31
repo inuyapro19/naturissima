@@ -30,7 +30,7 @@ class Slider extends Model
         'subtitulo',
         'imagen'
     ];
-
+     protected static $sortableField = 'position';
     /**
      * The attributes that should be casted to native types.
      *
